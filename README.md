@@ -10,7 +10,7 @@ Technischer Leitfaden [To-Scroll bis unter blauen Kasten]: https://wirvsvirushac
 FAQ: https://wirvsvirushackathon.org/faq/
 
 ABLAUF 20.03.2020
-14:00 - EMAILS VOM HACKATHON @ REGISTRIERTE TEILNEHMER
-16:00 – Versand Slack Zugang durch Organisierer
-18:00 – Team Sign-Up 
-19.30 – Start
+* 14:00 - EMAILS VOM HACKATHON @ REGISTRIERTE TEILNEHMER
+* 16:00 – Versand Slack Zugang durch Organisierer
+* 18:00 – Team Sign-Up 
+* 19.30 – Start
