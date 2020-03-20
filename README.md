@@ -98,6 +98,7 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
 * [Tarik](https://github.com/user2595) 
 * [pinkerpirat](https://github.com/pinkerpirat) - English Version/ README
 * Anja 
+* Robin
 
 ### Contributers  
 
