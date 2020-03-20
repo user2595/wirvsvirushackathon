@@ -46,6 +46,8 @@ The online form should cover as many [factors](https://www.rki.de/DE/Content/Inf
 
 ### 5. TO BE FILLED -> FORM ITSELF 
 
+[Please see here for Form and German Version under point 5](https://docs.google.com/document/d/1diL9oxF5AKe3QRHmleBNU0LyGiBUH81zBJ8mqOlB_j8/edit?ts=5e73a5e6#)
+
 ### 6.1 Useful functionalities
 
 #### Core functionalities:
