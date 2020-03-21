@@ -9,4 +9,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+/src/Migrations/*.php
+
 tags

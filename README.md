@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WE vs virus hackathon
 
 [Hackathon website](https://wirvsvirushackathon.org/) 
@@ -112,10 +113,10 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
     * You should now have Symfony installed. If there are missing dependencies (read: something does not work) then you might be missing the following packages: php-mysql, php-xml. On Ubuntu install these via ``sudo apt-get install php-mysql php-xml``.
 2. Install [mariadb](mariadb.org) (or any mysql distribution, but I have set it up to use mariadb)
     * Download the program [here](https://downloads.mariadb.org/mariadb/10.5.1/).
-    * On Ubuntu install it via `sudo apt-get install mariadb`
+    * On Ubuntu install it via `sudo apt-get install mariadb-server`
     * Create a new user called `wirvsvirus` with password `wirvsvirus`:  
         * on Ubuntu this works like so:
-        `` 
+        ```
             $ sudo -i
             # mysql  
             mariadb [(none)]> CREATE USER 'wirvsvirus'@'localhost' IDENTIFIED BY 'wirvsvirus';  
@@ -123,7 +124,7 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
             mariadb [(none)]> exit;
             # /etc/initd/mysql start
             # exit;
-        ``
+        ```
 3. Go into the folder where you want to have the project and run ``git clone https://github.com/user2595/wirvsvirushackathon.git``
 4. Checkout to `dev` branch.
 5. run `composer install`
