@@ -121,14 +121,17 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
             mariadb [(none)]> CREATE USER 'wirvsvirus'@'localhost' IDENTIFIED BY 'wirvsvirus';  
             mariadb [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'wirvsvirus'@'localhost';
             mariadb [(none)]> exit;
+            # /etc/initd/mysql start
             # exit;
         ``
 3. Go into the folder where you want to have the project and run ``git clone https://github.com/user2595/wirvsvirushackathon.git``
 4. Checkout to `dev` branch.
 5. run `composer install`
-6. run `php bin/console make:migration`
-7. Pray that the previous step works.
-8. run `symfony server:start` and follow the link that will be printed in the commandline.
+6. run `bin/console doctrine:database:create`
+7. run `php bin/console make:migration`
+8. run `php bin/console doctrine:migrations:migrate`
+9. Pray that the previous steps worked.
+10. run `symfony server:start` and follow the link that will be printed to the command-line.
 
 #### Troubleshooting
 
@@ -143,6 +146,9 @@ to log in anyways if you don't do it as such a user.
 Maybe you have not install php7. Install it! I think it already comes with composer but I am not sure.
 Also you might be missing some other php dependencies. Usually they are called
 `php-$whatever_is_not_working$`. for example `php-mysql` or `php-xml`.
+
+##### Can't connect to mysql driver
+Install `php-mysql`
 
 ##### Merge conflict in .lock file
 Delete it and run `composer install`.  

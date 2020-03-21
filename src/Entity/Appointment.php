@@ -26,6 +26,12 @@ class Appointment
      */
     private $patient;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Facility", inversedBy="appointments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $facility;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +63,18 @@ class Appointment
         if ($patient->getAppointment() !== $newAppointment) {
             $patient->setAppointment($newAppointment);
         }
+
+        return $this;
+    }
+
+    public function getFacility(): ?Facility
+    {
+        return $this->facility;
+    }
+
+    public function setFacility(?Facility $facility): self
+    {
+        $this->facility = $facility;
 
         return $this;
     }
