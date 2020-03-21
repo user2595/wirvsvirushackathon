@@ -144,6 +144,10 @@ Maybe you have not install php7. Install it! I think it already comes with compo
 Also you might be missing some other php dependencies. Usually they are called
 `php-$whatever_is_not_working$`. for example `php-mysql` or `php-xml`.
 
+##### Merge conflict in .lock file
+Delete it and run `composer install`.  
+This only works in early days of development and might break the codebase later!
+
 ### Contributers  
 
 _List will be completed on 23rd March 2020_
