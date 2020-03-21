@@ -128,7 +128,7 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
 3. Go into the folder where you want to have the project and run ``git clone https://github.com/user2595/wirvsvirushackathon.git``
 4. Checkout to `dev` branch.
 5. run `composer install`
-6. run `bin/console doctrine:database:create`
+6. run `php bin/console doctrine:database:create`
 7. run `php bin/console make:migration`
 8. run `php bin/console doctrine:migrations:migrate`
 9. Pray that the previous steps worked.
