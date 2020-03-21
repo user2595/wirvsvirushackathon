@@ -1,5 +1,23 @@
 {
     "php": {
         "version": "7.2"
+    },
+    "symfony/form": {
+        "version": "v5.0.5"
+    },
+    "symfony/inflector": {
+        "version": "v5.0.5"
+    },
+    "symfony/intl": {
+        "version": "v5.0.5"
+    },
+    "symfony/options-resolver": {
+        "version": "v5.0.5"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.14.0"
+    },
+    "symfony/property-access": {
+        "version": "v5.0.5"
     }
 }
