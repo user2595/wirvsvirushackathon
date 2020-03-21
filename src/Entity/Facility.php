@@ -1,0 +1,92 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\FacilityRepository")
+ */
+class Facility
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $freeSpace;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $occupiedSpace;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Address", inversedBy="facility", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFreeSpace(): ?int
+    {
+        return $this->freeSpace;
+    }
+
+    public function setFreeSpace(int $freeSpace): self
+    {
+        $this->freeSpace = $freeSpace;
+
+        return $this;
+    }
+
+    public function getOccupiedSpace(): ?int
+    {
+        return $this->occupiedSpace;
+    }
+
+    public function setOccupiedSpace(int $occupiedSpace): self
+    {
+        $this->occupiedSpace = $occupiedSpace;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+}
