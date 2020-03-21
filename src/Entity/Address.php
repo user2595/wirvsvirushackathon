@@ -46,13 +46,13 @@ class Address {
     private $zipCode;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="address")
+     * @ORM\OneToMany(targetEntity="App\Entity\Patient", mappedBy="address")
      */
-    private $people;
+    private $patients;
 
     public function __construct()
     {
-        $this->people = new ArrayCollection();
+        $this->patients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,30 +138,30 @@ class Address {
     }
 
     /**
-     * @return Collection|Person[]
+     * @return Collection|Patient[]
      */
-    public function getPeople(): Collection
+    public function getPatients(): Collection
     {
-        return $this->people;
+        return $this->patients;
     }
 
-    public function addPerson(Person $person): self
+    public function addPatient(Patient $patient): self
     {
-        if (!$this->people->contains($person)) {
-            $this->people[] = $person;
-            $person->setAddress($this);
+        if (!$this->patients->contains($patient)) {
+            $this->patients[] = $patient;
+            $patient->setAddress($this);
         }
 
         return $this;
     }
 
-    public function removePerson(Person $person): self
+    public function removePatient(Patient $patient): self
     {
-        if ($this->people->contains($person)) {
-            $this->people->removeElement($person);
+        if ($this->patients->contains($patient)) {
+            $this->patients->removeElement($patient);
             // set the owning side to null (unless already changed)
-            if ($person->getAddress() === $this) {
-                $person->setAddress(null);
+            if ($patient->getAddress() === $this) {
+                $patient->setAddress(null);
             }
         }
 
