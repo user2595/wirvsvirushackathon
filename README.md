@@ -115,7 +115,7 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
     * On Ubuntu install it via `sudo apt-get install mariadb-server`
     * Create a new user called `wirvsvirus` with password `wirvsvirus`:  
         * on Ubuntu this works like this:
-        ```
+        ``` 
             $ sudo -i
             # mysql  
             mariadb [(none)]> CREATE USER 'wirvsvirus'@'localhost' IDENTIFIED BY 'wirvsvirus';  
