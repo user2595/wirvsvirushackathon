@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="info">
+            Bitte gebe alle vornamen an, wie auf dem Ausweis.
+        </div>
+        <form class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="fname">Vorname(n)</label>
+                <input required class="form-control" name="fname" type="text">
+            </div>
+            <div class="form-group">
+                <label for="fname">Nachname</label>
+                <input required class="form-control" name="fname" type="text">
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Geburtsdatum</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label for="street">Straße und Hausnummer</label>
+                <input required class="form-control" name="street" type="text">
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Postleitzahl</label>
+                <input required class="form-control" name="zipcode">
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefonnummer</label>
+                <input class="form-control" name="phone">
+            </div>
+            <button type="submit" class="btn btn-primary">Absenden</button>
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html>
