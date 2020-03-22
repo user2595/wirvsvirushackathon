@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # WE vs virus hackathon
 
 [Hackathon website](https://wirvsvirushackathon.org/) 
