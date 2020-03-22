@@ -34,18 +34,13 @@ class Symptom
     private $degree;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\OneToMany(targetEntity="App\Entity\PatientSymptom", mappedBy="symptom", orphanRemoval=true)
      */
-    private $startingDate;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Patient", mappedBy="symptoms")
-     */
-    private $patients;
+    private $patientSymptoms;
 
     public function __construct()
     {
-        $this->patients = new ArrayCollection();
+        $this->patientSymptoms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,41 +84,32 @@ class Symptom
         return $this;
     }
 
-    public function getStartingDate(): ?\DateTimeInterface
-    {
-        return $this->startingDate;
-    }
-
-    public function setStartingDate(\DateTimeInterface $startingDate): self
-    {
-        $this->startingDate = $startingDate;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Patient[]
+     * @return Collection|PatientSymptom[]
      */
-    public function getPatients(): Collection
+    public function getPatientSymptoms(): Collection
     {
-        return $this->patients;
+        return $this->patientSymptoms;
     }
 
-    public function addPatient(Patient $patient): self
+    public function addPatientSymptom(PatientSymptom $patientSymptom): self
     {
-        if (!$this->patients->contains($patient)) {
-            $this->patients[] = $patient;
-            $patient->addSymptom($this);
+        if (!$this->patientSymptoms->contains($patientSymptom)) {
+            $this->patientSymptoms[] = $patientSymptom;
+            $patientSymptom->setSymptom($this);
         }
 
         return $this;
     }
 
-    public function removePatient(Patient $patient): self
+    public function removePatientSymptom(PatientSymptom $patientSymptom): self
     {
-        if ($this->patients->contains($patient)) {
-            $this->patients->removeElement($patient);
-            $patient->removeSymptom($this);
+        if ($this->patientSymptoms->contains($patientSymptom)) {
+            $this->patientSymptoms->removeElement($patientSymptom);
+            // set the owning side to null (unless already changed)
+            if ($patientSymptom->getSymptom() === $this) {
+                $patientSymptom->setSymptom(null);
+            }
         }
 
         return $this;

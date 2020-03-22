@@ -1,0 +1,9 @@
+<h1>{{ patient.name }} {{ patient.surname }}</h1>
+{{ patient.address.street }} {{ patient.address.nr }}</br>
+{{ patient.address.city }} {{ patient.address.zipCode }}, {{patient.address.country }}</br>
+</br>
+
+{{ patient.birthdate|date("d.m.Y") }}</br>
+{{ patient.email }}</br>
+{{ patient.phoneNr }}</br>
+<par>{{ patient.note }}</par>

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\RiskFactors;
+use App\Entity\RiskFactor;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method RiskFactors|null find($id, $lockMode = null, $lockVersion = null)
- * @method RiskFactors|null findOneBy(array $criteria, array $orderBy = null)
- * @method RiskFactors[]    findAll()
- * @method RiskFactors[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RiskFactor|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RiskFactor|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RiskFactor[]    findAll()
+ * @method RiskFactor[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RiskFactorsRepository extends ServiceEntityRepository
+class RiskFactorRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RiskFactors::class);
+        parent::__construct($registry, RiskFactor::class);
     }
 
     // /**
-    //  * @return RiskFactors[] Returns an array of RiskFactors objects
+    //  * @return RiskFactor[] Returns an array of RiskFactor objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class RiskFactorsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?RiskFactors
+    public function findOneBySomeField($value): ?RiskFactor
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Entity\Symptom;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
  */
@@ -44,7 +46,7 @@ class Patient
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="patients")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="patients", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $address;
@@ -55,17 +57,12 @@ class Patient
     private $note;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Symptom", inversedBy="patients")
-     */
-    private $symptoms;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\PreExistingCondition", inversedBy="patients")
      */
     private $preExistingConditions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\RiskFactors", inversedBy="patients")
+     * @ORM\ManyToMany(targetEntity="App\Entity\RiskFactor", inversedBy="patients")
      */
     private $riskFactors;
 
@@ -79,11 +76,16 @@ class Patient
      */
     private $test;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\PatientSymptom", mappedBy="patient", orphanRemoval=true)
+     */
+    private $patientSymptoms;
+
     public function __construct()
     {
-        $this->symptoms = new ArrayCollection();
         $this->preExistingConditions = new ArrayCollection();
         $this->riskFactors = new ArrayCollection();
+        $this->patientSymptoms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,32 +179,6 @@ class Patient
     }
 
     /**
-     * @return Collection|Symptom[]
-     */
-    public function getSymptoms(): Collection
-    {
-        return $this->symptoms;
-    }
-
-    public function addSymptom(Symptom $symptom): self
-    {
-        if (!$this->symptoms->contains($symptom)) {
-            $this->symptoms[] = $symptom;
-        }
-
-        return $this;
-    }
-
-    public function removeSymptom(Symptom $symptom): self
-    {
-        if ($this->symptoms->contains($symptom)) {
-            $this->symptoms->removeElement($symptom);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|PreExistingCondition[]
      */
     public function getPreExistingConditions(): Collection
@@ -229,14 +205,14 @@ class Patient
     }
 
     /**
-     * @return Collection|RiskFactors[]
+     * @return Collection|RiskFactor[]
      */
     public function getRiskFactors(): Collection
     {
         return $this->riskFactors;
     }
 
-    public function addRiskFactor(RiskFactors $riskFactor): self
+    public function addRiskFactor(RiskFactor $riskFactor): self
     {
         if (!$this->riskFactors->contains($riskFactor)) {
             $this->riskFactors[] = $riskFactor;
@@ -245,7 +221,7 @@ class Patient
         return $this;
     }
 
-    public function removeRiskFactor(RiskFactors $riskFactor): self
+    public function removeRiskFactor(RiskFactor $riskFactor): self
     {
         if ($this->riskFactors->contains($riskFactor)) {
             $this->riskFactors->removeElement($riskFactor);
@@ -282,4 +258,56 @@ class Patient
 
         return $this;
     }
+
+    /**
+     * @return Collection|PatientSymptom[]
+     */
+    public function getPatientSymptoms(): Collection
+    {
+        return $this->patientSymptoms;
+    }
+
+    public function addPatientSymptom(PatientSymptom $patientSymptom): self
+    {
+        if (!$this->patientSymptoms->contains($patientSymptom)) {
+            $this->patientSymptoms[] = $patientSymptom;
+            $patientSymptom->setPatient($this);
+        }
+
+        return $this;
+    }
+
+    public function removePatientSymptom(PatientSymptom $patientSymptom): self
+    {
+        if ($this->patientSymptoms->contains($patientSymptom)) {
+            $this->patientSymptoms->removeElement($patientSymptom);
+            // set the owning side to null (unless already changed)
+            if ($patientSymptom->getPatient() === $this) {
+                $patientSymptom->setPatient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    // TODO(aurel): Add date support.
+    public function addSymptom(?Symptom $symptom/*, \DateTime $date*/): self {
+        // TODO(aurel): check if already exists.
+        //PatientSymptom $patientSymptom = new PatientSymptom();
+        //$patientSymptom->setPatient($this);
+        //$patientSymptom->setSymptom($symptom);
+
+        return addPatientSymptom((new PatientSymptom())->setPatient($this)->setSymptom($symptom));
+    }
+
+    public function getSymptoms(): Collection {
+        // TODO(aurel): Query for all symptoms.
+        return new ArrayCollection();
+    }
+
+    public function removeSymptom(?Symptom $symptom): self {
+        // TODO(aurel): Implement by querying for the right PatientSymptom and removing it.
+        return $this;
+    }
+
 }
