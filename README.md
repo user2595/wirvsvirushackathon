@@ -155,6 +155,16 @@ Install `php-mysql`
 Delete it and run `composer install`.  
 This only works in early days of development and might break the codebase later!
 
+#### Changing the Database
+When changing the database run the following commands to apply the changes actually to the mysql-server:
+```
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+```
+**Note:** This will remove all the entities in the database!
+
 ### Contributers  
 
 _List will be completed on 23rd March 2020_
