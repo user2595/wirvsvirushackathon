@@ -54,25 +54,25 @@
     child {node[attribute, xshift=1cm] {Date}};
 
     \draw (patient) -- node [relationship, fill=white!100] {has} (symptom)
-    node[pos=0.03, above]{$n$} node[pos=0.97, above]{$n$};
+    node[pos=0.05, above]{$n$} node[pos=0.97, above]{$n$};
 
     \draw (patient) -- node [relationship, fill=white!100] {has} (condition)
     node[pos=0.05, above]{$n$} node[pos=1.01, above]{$n$};
 
     \draw (patient) -- node [relationship, fill=white!100] {has} (risk)
-    node[pos=0.03, right]{$n$} node[pos=0.99, right]{$n$};
+    node[pos=0.05, right]{$n$} node[pos=0.96, right]{$n$};
 
     \draw (patient) -- node [relationship, fill=white!100] {has} (appointment)
-    node[pos=0.03, left]{$n$} node[pos=0.97, left]{$n$};
+    node[pos=0.05, left]{$1$} node[pos=0.95, left]{$1$};
 
     \draw (patient) -- node [relationship, fill=white!100] {has} (address)
-    node[pos=0.03, above]{$n$} node[pos=0.97, above]{$n$};
+    node[pos=0.05, above]{$n$} node[pos=0.97, above]{$1$};
 
     \draw (facility) -- node [relationship, fill=white!100] {has} (address)
-    node[pos=0.03, right]{$n$} node[pos=0.97, right]{$n$};
+    node[pos=0.05, right]{$1$} node[pos=0.95, right]{$1$};
 
     \draw (facility) -- node [relationship, fill=white!100] {has} (appointment)
-    node[pos=0.03, above]{$n$} node[pos=0.97, above]{$n$};
+    node[pos=0.05, above]{$1$} node[pos=0.95, above]{$n$};
 
 \end{tikzpicture}
 
