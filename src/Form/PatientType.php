@@ -80,5 +80,3 @@ class PatientType extends AbstractType {
         ]);
     }
 }
-
-

@@ -122,7 +122,7 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
             mariadb [(none)]> CREATE USER 'wirvsvirus'@'localhost' IDENTIFIED BY 'wirvsvirus';  
             mariadb [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'wirvsvirus'@'localhost';
             mariadb [(none)]> exit;
-            # /etc/initd/mysql start
+            # /etc/init.d/mysql start
             # exit;
         ```
 3. Go into the folder where you want to have the project and run ``git clone https://github.com/user2595/wirvsvirushackathon.git``

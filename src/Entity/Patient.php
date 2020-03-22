@@ -36,7 +36,7 @@ class Patient
     private $birthdate;
 
     /**
-     * @ORM\Column(type="string", length=15, nullable=true)
+     * @ORM\Column(type="string", length=31, nullable=true)
      */
     private $phoneNr;
 
