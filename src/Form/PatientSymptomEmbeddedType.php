@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Doctrine\ORM\EntityRepository;
+
 use App\Entity\Symptom;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,10 +20,10 @@ class PatientSymptomEmbeddedType extends AbstractType
         $builder ->add('symptom', EntityType::class, [
             'class' => Symptom::class,
             'query_builder' => function (EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.name', 'ASC');
+                return $er->queryAllOrderedByName();
             },
             'choice_label' => 'name',
-            'expanded' => true,
+            'expanded' => false,
             'multiple' => false,
         ]);
         $builder->add('startingDate');

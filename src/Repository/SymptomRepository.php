@@ -20,22 +20,41 @@ class SymptomRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return QueryBuilder which can query all symptoms ordered by name
+     */
+    public function queryAllOrderedByName() {
+        return $this->createQueryBuilder('symptom')
+            ->orderBy('symptom.name', 'DESC')
+            ;
+    }
+    /**
      * @return Symptom[] Returns an array of Symptoms
      */
     public function findAllOrderedByName() {
-        return $this->createQueryBuilder('symptom')
-            ->orderBy('symptom.name', 'DESC')
+        return $this->queryAllOrderedByName()
+            ->getQuery()
+            ->getResult()
         ;
     }
 
+
+    /**
+     * @return QueryBuilder which queries for a symptom with id
+     */
+    public function queryId($id) {
+        return $this->createQueryBuilder('symptom')
+            ->andWhere('symptom.id = :id')
+            ->setParameter('id', $id)
+            ;
+    }
     /**
     * @return Symptom Returns the matching symptom
     */
     public function findById($id)
     {
-        return $this->createQueryBuilder('symptom')
-            ->andWhere('symptom.id = :id')
-            ->setParameter('id', $id)
+        return $this->queryId($id)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

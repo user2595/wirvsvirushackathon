@@ -47,4 +47,16 @@ class SymptomController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/symptom/list", name="symptom_list")
+     */
+    public function createSymptomList(): Response {
+        $symptoms = $this->getDoctrine()->getRepository(Symptom::class)->findAllOrderedByName();
+
+        return $this->render('symptom/list.html.twig', [
+            'symptoms' => $symptoms,
+        ]);
+    }
+
 }
