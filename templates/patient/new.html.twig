@@ -1,3 +1,6 @@
 {# templates/patient/new.html.twig #}
  
-{{ form(patient_form) }}
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form(patient_form) }}
+{% endblock %}
