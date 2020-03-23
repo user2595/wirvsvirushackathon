@@ -19,32 +19,23 @@ class SymptomRepository extends ServiceEntityRepository
         parent::__construct($registry, Symptom::class);
     }
 
-    // /**
-    //  * @return Symptom[] Returns an array of Symptom objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+    /**
+     * @return Symptom[] Returns an array of Symptoms
+     */
+    public function findAllOrderedByName() {
+        return $this->createQueryBuilder('symptom')
+            ->orderBy('symptom.name', 'DESC')
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Symptom
+    /**
+    * @return Symptom Returns the matching symptom
+    */
+    public function findById($id)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        return $this->createQueryBuilder('symptom')
+            ->andWhere('symptom.id = :id')
+            ->setParameter('id', $id)
         ;
     }
-    */
 }
