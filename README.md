@@ -94,6 +94,9 @@ Time of receipt | Last Name | First Name | Riskgroup?  | Appointement | Tested? 
 
 _Note pinkerpirat: This should be discussed further since GDPR violation can be easily done here._
 
+### Development
+See wiki!
+
 ### Authors
 
 * Anna-Kathrina - Idea & Text
@@ -101,68 +104,6 @@ _Note pinkerpirat: This should be discussed further since GDPR violation can be 
 * [pinkerpirat](https://github.com/pinkerpirat) - English Version/ README
 * Anja 
 * [rknntns](https://github.com/rknntns)
-
-### Development
-
-#### Installation
-
-1. Install Composer and [Symfony](https://symfony.com)
-    * On Ubuntu run: ``sudo apt-get update && sudo apt-get install composer``
-    * Then do what ever [this](https://symfony.com/download) site says for your OS
-    * You should now have Symfony installed. If there are missing dependencies (read: something does not work) then you might be missing the following packages: php-mysql, php-xml. On Ubuntu install these via ``sudo apt-get install php-mysql php-xml``.
-2. Install [mariadb](mariadb.org) (or any mysql distribution, but I have set it up to use mariadb)
-    * Download the program [here](https://downloads.mariadb.org/mariadb/10.5.1/).
-    * On Ubuntu install it via `sudo apt-get install mariadb-server`
-    * Create a new user called `wirvsvirus` with password `wirvsvirus`:  
-        * on Ubuntu this works like so:
-        ```
-            $ sudo -i
-            # mysql  
-            mariadb [(none)]> CREATE USER 'wirvsvirus'@'localhost' IDENTIFIED BY 'wirvsvirus';  
-            mariadb [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'wirvsvirus'@'localhost';
-            mariadb [(none)]> exit;
-            # /etc/init.d/mysql start
-            # exit;
-        ```
-3. Go into the folder where you want to have the project and run ``git clone https://github.com/user2595/wirvsvirushackathon.git``
-4. Checkout to `dev` branch.
-5. run `composer install`
-6. run `php bin/console doctrine:database:create`
-7. run `php bin/console make:migration`
-8. run `php bin/console doctrine:migrations:migrate`
-9. Pray that the previous steps worked.
-10. run `symfony server:start` and follow the link that will be printed to the command-line.
-
-#### Troubleshooting
-
-##### You can't access the database
-This might be because you have not set up the permissions correctly. In theory the mariadb commands
-should work the same on all platforms, so just try to do everything suffixed with `mariadb [(none)]> ` in
-step 2 above.  
-IMPORTANT: You need to run mariadb as a root/admin user or this wont work. But you probably wont be able
-to log in anyways if you don't do it as such a user.
-
-##### Symfony wont run
-Maybe you have not install php7. Install it! I think it already comes with composer but I am not sure.
-Also you might be missing some other php dependencies. Usually they are called
-`php-$whatever_is_not_working$`. for example `php-mysql` or `php-xml`.
-
-##### Can't connect to mysql driver
-Install `php-mysql`
-
-##### Merge conflict in .lock file
-Delete it and run `composer install`.  
-This only works in early days of development and might break the codebase later!
-
-#### Changing the Database
-When changing the database run the following commands to apply the changes actually to the mysql-server:
-```
-php bin/console doctrine:migrations:diff
-php bin/console doctrine:database:drop --force
-php bin/console doctrine:database:create
-php bin/console doctrine:migrations:migrate
-```
-**Note:** This will remove all the entities in the database!
 
 ### Contributers  
 
